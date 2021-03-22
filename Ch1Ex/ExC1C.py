@@ -1,5 +1,4 @@
 import unittest
-import random
 
 # C1.13
 """For each index at the start swap with the index at the back
@@ -17,6 +16,7 @@ def reverse(data):
         back -= 1
         visited_count += 2
     return data
+
 
 # C1.14
 def findOddProduct(data):
@@ -38,10 +38,10 @@ class TestAnsC1(unittest.TestCase):
         self.assertEqual(reverse(testdata2), [5, 4, 3, 2, 1])
 
     def testFindOddProduct(self):
-        testdata = [1,2]
-        testdata2 = [1,2,3]
-        testdata3 = [2,2,3,5]
-        testdata4 = [1,2,4,6]
+        testdata = [1, 2]
+        testdata2 = [1, 2, 3]
+        testdata3 = [2, 2, 3, 5]
+        testdata4 = [1, 2, 4, 6]
         self.assertFalse(findOddProduct(testdata))
         self.assertTrue(findOddProduct(testdata2))
         self.assertTrue(findOddProduct(testdata3))
