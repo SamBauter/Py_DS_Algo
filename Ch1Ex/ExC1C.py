@@ -1,6 +1,7 @@
 import unittest
 import random
-import sys
+import string
+import copy
 
 # C1.13
 """For each index at the start swap with the index at the back
@@ -80,6 +81,7 @@ def myShuffle(data):
         ind2 = random.randint(0, len(data) - 1)
         data[ind1], data[ind2] = data[ind2], data[ind1]
 
+
 # C1.21
 # Ctrl+Z to send EOF to windows cannot do in Pycharm REPL need to use Terminal
 def reverseInput():
@@ -93,6 +95,81 @@ def reverseInput():
         contents.insert(0, line)
     for entry in contents:
         print(entry)
+
+
+# C1.22
+def dotProd(a, b):
+    ret = []
+    for i, j in zip(a, b):
+        ret.append(i * j)
+    return ret
+
+
+# C1.23
+def bufferOverflow(list):
+    try:
+        list[2] = 15
+    except IndexError:
+        print('Don\'t try buffer overflow attacks in Python')
+
+
+# C1.24
+def countVowels(teststr):
+    lstring = teststr.lower()
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    count = 0
+    for vowel in vowels:
+        for char in lstring:
+            if char == vowel:
+                count += 1
+    return count
+
+
+# C1.25
+def remPunct(teststr):
+    l = list(teststr)
+    for mark in string.punctuation:
+        for i in l:
+            if i == mark:
+                l.remove(i)
+    return ''.join([str(elem) for elem in l])
+
+
+# C1.26
+def isArithmetic():
+    a = int(input("Enter 3 numbers"))
+    b = int(input())
+    c = int(input())
+    if a + b == c:
+        return True
+    elif a == b - c:
+        return True
+    elif a * b == c:
+        return True
+    else:
+        return False
+
+
+# C1.27
+def factors(n):
+    k = 1
+    upperFactors = []
+    while k * k < n:
+        if n % k == 0:
+            yield k
+            upperFactors.insert(0, n // k)
+        k+=1
+    if k * k == n:
+        yield k
+    for i in upperFactors:
+        yield i
+
+# C1.28
+def norm(v,p=2):
+    sum = 0
+    for coord in v:
+        sum=sum+coord**p
+    return sum**(1/p)
 
 
 
